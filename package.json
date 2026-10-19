@@ -1,0 +1,13 @@
+{
+	"name": "wisepipe-ops-parity-tool",
+	"license": "UNLICENSED",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"engines": {
+		"node": ">=22.6"
+	},
+	"scripts": {
+		"start": "node --experimental-strip-types src/index.ts"
+	}
+}
