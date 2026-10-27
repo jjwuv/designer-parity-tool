@@ -1,2 +1,5 @@
 node_modules
 *.csv
+snapshots/
+reports/single/
+reports/two/

@@ -1,0 +1,12 @@
+{
+	"a": {
+		"orgID": "4468a1f0-ec56-4bb9-b81f-9be9084c6a9d",
+		"env": "designer-daily",
+		"modelName": "BMRNProdDesignerJul16"
+	},
+	"b": {
+		"orgID": "e71de6f3-4b2c-44c8-a9bb-9a52cc22a797",
+		"env": "designer-staging",
+		"modelName": "BMRNProdDesignerJul16"
+	}
+}

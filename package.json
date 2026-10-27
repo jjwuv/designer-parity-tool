@@ -8,6 +8,11 @@
 		"node": ">=22.6"
 	},
 	"scripts": {
-		"start": "node --experimental-strip-types src/index.ts"
+		"start": "node --experimental-strip-types src/index.ts",
+		"designer-parity-tool": "node --experimental-strip-types src/index.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^22.20.5",
+		"typescript": "^7.0.2"
 	}
 }

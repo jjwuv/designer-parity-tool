@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Parity Report</title><style>
+body{font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;margin:24px;color:#222}
+h1{font-size:20px;margin:0 0 16px}
+table{border-collapse:collapse;font-size:13px}
+table.info{margin-bottom:12px;min-width:640px}
+table.results{width:100%;margin-top:16px}
+th,td{border:1px solid #ccc;padding:6px 10px;text-align:left}
+th{background:#f0f0f0}
+table.info th.title{background:#333;color:#fff;font-size:14px}
+table.info td.label{background:#f0f0f0;font-weight:600;width:200px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+td.bad,tr.mismatch td{background:#fce8e6;color:#c5221f}
+tr.mismatch td.missing,td.missing{background:#ffcc80;color:#8a4500}
+tr.mismatch td.na,td.na{background:#eeeeee;color:#777}
+td.diff-count{font-weight:700}
+tr.group-start td{border-top:3px solid #666}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+table.legend{min-width:380px}
+table.legend th.title{background:#333;color:#fff;font-size:14px}
+table.legend td.swatch{width:70px}
+h2{font-size:16px;margin:28px 0 4px}
+.meta{color:#555;font-size:12px;margin-top:4px}
+</style></head>
+<body>
+<h1>Parity Report</h1>
+<div class="top">
+<table class="info">
+<tr><th></th><th>Model A</th><th>Model B</th></tr>
+<tr><td class="label">Snapshot</td><td>Hybrid</td><td>Big</td></tr>
+<tr><td class="label">Saved</td><td>10/26/2026, 5:11:15 PM</td><td>10/26/2026, 5:45:53 PM</td></tr>
+<tr><td class="label">Environment</td><td>designer-daily</td><td>designer-daily</td></tr>
+<tr><td class="label">Model name</td><td>FCBDEV0814</td><td>FCBDEV0814</td></tr>
+<tr><td class="label">Org ID</td><td>e349f5bb-50d6-4530-a780-b5c30489642c</td><td>e349f5bb-50d6-4530-a780-b5c30489642c</td></tr>
+<tr><td class="label">Calculations compared</td><td colspan="2">45</td></tr>
+<tr><td class="label">Total elements compared</td><td colspan="2">1823 (tools in parity: 1765, tools not in parity: 1, tools not found in either model: 57)</td></tr>
+<tr><td class="label">Preview</td><td colspan="2">Stored samples, not regenerated: Preview mismatches may be stale (save with --refresh-previews to rebuild)</td></tr>
+<tr><td class="label">Preview refresh failures</td><td colspan="2">57 (those Preview counts may be stale)</td></tr>
+<tr><td class="label">Generated</td><td colspan="2">10/26/2026, 5:59:50 PM</td></tr>
+</table>
+<table class="legend">
+<tr><th>Color</th><th>Model A / Model B</th><th>Results</th></tr>
+<tr><td class="swatch na">Grey</td><td>N/A in both models</td><td>Tool Not Found</td></tr>
+<tr><td class="swatch missing">Orange</td><td>N/A in one model, real count in the other</td><td>N/A</td></tr>
+<tr><td class="swatch bad">Red</td><td>Counts exist in both but differ</td><td>B minus A</td></tr>
+<tr><td class="swatch">None</td><td>Counts match</td><td>0</td></tr>
+<tr><td class="swatch" colspan="3">Preview counts are capped at 10,000: shown as "10,000+"; two capped counts are treated as a match.</td></tr>
+</table>
+</div>
+<table class="results">
+<thead><tr><th>calculationName</th><th>pipeID</th><th>elementName</th><th>toolType</th><th>elementID</th><th>parity</th><th>previewA</th><th>previewB</th><th>previewResults</th><th>lastRunA</th><th>lastRunB</th><th>lastRunResults</th></tr></thead>
+<tbody>
+<tr class="group-start"><td>CRD GLBM F03 Aggregated Monthly Txn Metrics Crediting</td><td>yOuSpIcI3yO2Sw</td><td>CRD ASGN F01 Global Transaction Assignment Crediting</td><td>incentives_import</td><td>A-dg5lwmGpmy5w</td><td>Yes</td><td class="num">820</td><td class="num">820</td><td class="num">0</td><td class="num">820</td><td class="num">820</td><td class="num">0</td></tr>
+<tr><td>CRD GLBM F03 Aggregated Monthly Txn Metrics Crediting</td><td>yOuSpIcI3yO2Sw</td><td>CRD FINM F01 Payee Aggregated Financials Component Metric</td><td>incentives_import</td><td>iWFmNLo5mwDpYA</td><td>Yes</td><td class="num">264</td><td class="num">264</td><td class="num">0</td><td class="num">264</td><td class="num">264</td><td class="num">0</td></tr>
+<tr class="mismatch"><td>CRD GLBM F03 Aggregated Monthly Txn Metrics Crediting</td><td>yOuSpIcI3yO2Sw</td><td>CRD GLBM F02 All Transactional Metrics Crediting</td><td>incentives_export</td><td>XS998FZpV-cRJA</td><td class="bad">No</td><td class="num">3015</td><td class="num">3015</td><td class="num">0</td><td class="num na">N/A</td><td class="num na">N/A</td><td class="num na">Tool Not Found</td></tr>
+<tr><td>CRD GLBM F03 Aggregated Monthly Txn Metrics Crediting</td><td>yOuSpIcI3yO2Sw</td><td>CRD TPPA F01 Transactional PPA Crediting</td><td>incentives_import</td><td>FWgQUfJJeMVgVw</td><td>Yes</td><td class="num">3015</td><td class="num">3015</td><td class="num">0</td><td class="num">3015</td><td class="num">3015</td><td class="num">0</td></tr>
+<tr><td>CRD GLBM F03 Aggregated Monthly Txn Metrics Crediting</td><td>yOuSpIcI3yO2Sw</td><td>ELG GLBL F01 Payee Eligibility</td><td>incentives_import</td><td>fGfzKzHpSRVU7Q</td><td>Yes</td><td class="num">448</td><td class="num">448</td><td class="num">0</td><td class="num">448</td><td class="num">448</td><td class="num">0</td></tr>
+</tbody></table>
+<h2>Tools not found in either model (57)</h2>
+<div class="meta">No Preview or Last Run row count exists in either model, so these are not counted as mismatches.</div>
+<table class="results">
+<thead><tr><th>calculationName</th><th>pipeID</th><th>elementName</th><th>toolType</th><th>elementID</th></tr></thead>
+<tbody>
+<tr class="group-start"><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>(CFG ALL) Fetch all Config Values</td><td>reusable_logic</td><td>rRt6W0TR6_iC5w</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>8Ts0LXmbX68quQ</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>bbVTBoS56vjbiQ</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>BQ4zj6Sa7XAr3w</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>iD24xCstPAWJ_Q</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>PVUXOi-KLeasog</td></tr>
+<tr><td>CRD SUBM T01 Config Types</td><td>q6Za2wZtnxvlGQ</td><td>reusable_logic</td><td>reusable_logic</td><td>Tof3V6iOcsbTDg</td></tr>
+<tr class="group-start"><td>CTL BUSD F01 Business Day Count</td><td>7dyo3uhkOzooig</td><td>CTL BUSD F01 Business Day Count</td><td>incentives_export</td><td>6z2vveAhpraqbA</td></tr>
+<tr><td>CTL BUSD F01 Business Day Count</td><td>7dyo3uhkOzooig</td><td>reusable_logic</td><td>reusable_logic</td><td>26ADVxgpJSM-lA</td></tr>
+<tr class="group-start"><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0060 Hie Custom Tool Level 2</td><td>reusable_logic</td><td>FuqQH9wVWFUZSg</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0070 Hie Custom Tool Level 3</td><td>reusable_logic</td><td>d9TlKi94wT09sA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0080 Hie Custom Tool Level 4</td><td>reusable_logic</td><td>H4Rv1BSfGL0_0w</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0090 Hie Custom Tool Level 5</td><td>reusable_logic</td><td>eI5QicN_mrfJyA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0100 Hie Custom Tool Level 6</td><td>reusable_logic</td><td>p7EA8Jm8jArFbA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0110 Hie Custom Tool Level 7</td><td>reusable_logic</td><td>R2fi5zrmzKwSXA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0120 Hie Custom Tool Level 8</td><td>reusable_logic</td><td>CqkgGUFH5WRcnw</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0130 Hie Custom Tool Level 9</td><td>reusable_logic</td><td>JJwCAJaJ6a7GBA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0140 Hie Custom Tool Level 10</td><td>reusable_logic</td><td>ouL_XZXGunPQng</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0150 Hie Custom Tool Level 11</td><td>reusable_logic</td><td>q7gj6Nh1gtl7Dg</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0160 Hie Custom Tool Level 12</td><td>reusable_logic</td><td>aYDqP6pFsK58sw</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0170 Hie Custom Tool Level 13</td><td>reusable_logic</td><td>akTchVwvdjkElA</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0180 Hie Custom Tool Level 14</td><td>reusable_logic</td><td>FEw3DAg-u2AofQ</td></tr>
+<tr><td>HIE PROD F02 Product Code Hierarchy Feed</td><td>aN25yH7HMX5IqA</td><td>0190 Hie Custom Tool Level 15</td><td>reusable_logic</td><td>-ahnlrJUA3zo5w</td></tr>
+<tr class="group-start"><td>HIE TERR F04 Territory Strategy Map</td><td>ONKMKQ8Y8ZczkQ</td><td>0080 Hie Custom Tool Level 2</td><td>reusable_logic</td><td>qTybcTWFtX3uTA</td></tr>
+<tr><td>HIE TERR F04 Territory Strategy Map</td><td>ONKMKQ8Y8ZczkQ</td><td>0090 Hie Custom Tool Level 3</td><td>reusable_logic</td><td>cNngY6JqaJdXhw</td></tr>
+<tr><td>HIE TERR F04 Territory Strategy Map</td><td>ONKMKQ8Y8ZczkQ</td><td>0100 Hie Custom Tool Level 4</td><td>reusable_logic</td><td>mj3slkSbskGnnA</td></tr>
+<tr><td>HIE TERR F04 Territory Strategy Map</td><td>ONKMKQ8Y8ZczkQ</td><td>0110 Hie Custom Tool Level 5</td><td>reusable_logic</td><td>Vr2b82gs7VVdUw</td></tr>
+<tr><td>HIE TERR F04 Territory Strategy Map</td><td>ONKMKQ8Y8ZczkQ</td><td>0120 Hie Custom Tool Level 6</td><td>reusable_logic</td><td>aukBfR9-hTt1gg</td></tr>
+<tr class="group-start"><td>Hierarchy Custom Tool</td><td>Sp9U7Gar3gCw8w</td><td>Hie Custom Tool</td><td>reusable_logic</td><td>G_LT9EohOWWTPw</td></tr>
+<tr class="group-start"><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>aggregate</td><td>aggregate</td><td>2os5IC4laPVwiw</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>aggregate</td><td>aggregate</td><td>S34C7AuR5UWeew</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>incentives_period</td><td>incentives_period</td><td>Fea8l9rcZpbs8Q</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>join_v2</td><td>join_v2</td><td>DgNoeQupZsiBCA</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>join_v2</td><td>join_v2</td><td>r22SZ5svKMhHOg</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>join_v2</td><td>join_v2</td><td>XDCX4ioFwC4fVw</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>Large Data Set</td><td>incentives_export</td><td>W4ypHHGn5Laehg</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>multi_formula</td><td>multi_formula</td><td>XTccxNndkA6MlA</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>select</td><td>select</td><td>2uQdwA1YMwMdEg</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>select</td><td>select</td><td>Cd4AYU8imJfPzA</td></tr>
+<tr><td>Large Data Set</td><td>POeQKeprqakAQQ</td><td>select</td><td>select</td><td>vil9-KODVdqLRQ</td></tr>
+<tr class="group-start"><td>New calculation</td><td>83PSGl_gc2XUGQ</td><td>Filter_HireDate_After_1999</td><td>filter_v3</td><td>KOIEgs-aSacenA</td></tr>
+<tr><td>New calculation</td><td>83PSGl_gc2XUGQ</td><td>Filter_Top_20_Payees</td><td>filter_v3</td><td>r3qy52lsNh4GIA</td></tr>
+<tr><td>New calculation</td><td>83PSGl_gc2XUGQ</td><td>Join_Data_Payee</td><td>join_v2</td><td>E75MgCS21mAgZA</td></tr>
+<tr><td>New calculation</td><td>83PSGl_gc2XUGQ</td><td>New calculation</td><td>incentives_export</td><td>e3m5VE7eNrSkOQ</td></tr>
+<tr><td>New calculation</td><td>83PSGl_gc2XUGQ</td><td>Top_20_Payees</td><td>aggregate</td><td>KvpqFa4aTAvSSg</td></tr>
+<tr class="group-start"><td>New calculation</td><td>mjImbDTxqZnyQg</td><td>New calculation</td><td>incentives_export</td><td>G6JdlOQwm5ip2Q</td></tr>
+<tr class="group-start"><td>OUT BUSS F01 Business Days Feed</td><td>nw0VB3PS0VGfXw</td><td>reusable_logic</td><td>reusable_logic</td><td>6h98rjUJgETW_w</td></tr>
+<tr><td>OUT BUSS F01 Business Days Feed</td><td>nw0VB3PS0VGfXw</td><td>reusable_logic</td><td>reusable_logic</td><td>i_O96hbtzbrZYw</td></tr>
+<tr><td>OUT BUSS F01 Business Days Feed</td><td>nw0VB3PS0VGfXw</td><td>reusable_logic</td><td>reusable_logic</td><td>sDPn1xsvyq7pEw</td></tr>
+<tr class="group-start"><td>QTA LOAP F01 LOA Proration Feed</td><td>9Go_Hge2EYYXvQ</td><td>0010 Calc Mth Bus Days</td><td>reusable_logic</td><td>0aKhGCNmqnowfQ</td></tr>
+<tr><td>QTA LOAP F01 LOA Proration Feed</td><td>9Go_Hge2EYYXvQ</td><td>0020 Calc Mth LOA Bus Days</td><td>reusable_logic</td><td>5ITphdCXmwNMjQ</td></tr>
+<tr class="group-start"><td>RPT POCE plGroup</td><td>daznHFulFE1fzQ</td><td>POC Ranking Report</td><td>incentives_export</td><td>AO0p8mnkW6AUrA</td></tr>
+<tr><td>RPT POCE plGroup</td><td>daznHFulFE1fzQ</td><td>PRR 0100 Fetch FormatVal</td><td>join_v2</td><td>5e1P1lZQsIfZzA</td></tr>
+<tr class="group-start"><td>Testing_Calculation_Name_06_15</td><td>wu8FmOEE2uDkYQ</td><td>Testing_Calculation_Name_06_15</td><td>incentives_export</td><td>KuKbHfgHhidJJw</td></tr>
+<tr class="group-start"><td>UTL BUSD F02 BusDays In Month</td><td>ooeUv4rSBKgwmw</td><td>0010 BusDay Full Mth</td><td>reusable_logic</td><td>W_FZVlwrFKbfgA</td></tr>
+<tr><td>UTL BUSD F02 BusDays In Month</td><td>ooeUv4rSBKgwmw</td><td>0020 BusDay AOD Mth</td><td>reusable_logic</td><td>h4eiFfoRi_w-zQ</td></tr>
+<tr><td>UTL BUSD F02 BusDays In Month</td><td>ooeUv4rSBKgwmw</td><td>0030 BusDay AOD YTD Mth</td><td>reusable_logic</td><td>UR8cMRlK5axqpg</td></tr>
+</tbody></table>
+</body></html>

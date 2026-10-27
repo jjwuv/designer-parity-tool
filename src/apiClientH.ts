@@ -29,6 +29,28 @@ export class ApiClient {
 	}
 
 	async get<T>(path: string, query: Record<string, string | undefined> = {}): Promise<T> {
+		return this.request<T>('GET', path, query);
+	}
+
+	async post<T>(path: string, body: unknown): Promise<T> {
+		return this.request<T>('POST', path, {}, body);
+	}
+
+	async getDesigner<T>(path: string): Promise<T> {
+		return this.tokenProvider.getDesigner<T>(path);
+	}
+
+	/** Best-effort DELETE; the response body (if any) is ignored. */
+	async delete(path: string): Promise<void> {
+		await this.request<unknown>('DELETE', path);
+	}
+
+	private async request<T>(
+		method: 'GET' | 'POST' | 'DELETE',
+		path: string,
+		query: Record<string, string | undefined> = {},
+		body?: unknown
+	): Promise<T> {
 		const params = new URLSearchParams();
 		Object.entries(query).forEach(([key, value]) => {
 			if (value !== undefined) params.set(key, value);
@@ -41,6 +63,8 @@ export class ApiClient {
 			const session = await this.tokenProvider.getSession();
 			try {
 				response = await fetch(`${session.apiUrl}${path}${queryString}`, {
+					method,
+					body: body === undefined ? undefined : JSON.stringify(body),
 					headers: {
 						Authorization: session.authorization,
 						[ORG_HEADER]: this.target.orgID,
@@ -52,13 +76,16 @@ export class ApiClient {
 				if (attempt >= MAX_RETRIES) throw error;
 			}
 
-			if (response?.ok) return (await response.json()) as T;
+			if (response?.ok) {
+				const text = await response.text();
+				return (text ? JSON.parse(text) : undefined) as T;
+			}
 
 			if (response?.status === 401 && !hasReauthenticated) {
 				hasReauthenticated = true;
 				await this.tokenProvider.getSession(true);
 			} else if (response && (!isRetryableStatus(response.status) || attempt >= MAX_RETRIES)) {
-				throw new ApiError(response.status, `GET ${path} failed (${response.status}): ${await response.text()}`);
+				throw new ApiError(response.status, `${method} ${path} failed (${response.status}): ${await response.text()}`);
 			} else {
 				await sleep(RETRY_BASE_DELAY_MS * 2 ** attempt);
 			}

@@ -16,11 +16,6 @@ const getJwtExpiry = (token: string): number => {
 	}
 };
 
-// e.g. ('designer-staging', 'APIKEY') -> PARITY_DESIGNER_STAGING_APIKEY, falling back to PARITY_APIKEY.
-const envVarName = (env: string, name: string): string => `PARITY_${env.toUpperCase().replace(/[^A-Z0-9]/g, '_')}_${name}`;
-const readEnvVar = (env: string, name: string): string | undefined =>
-	process.env[envVarName(env, name)] ?? process.env[`PARITY_${name}`];
-
 export const getEnvironment = (env: string): EnvironmentConfig => {
 	const config = ENVIRONMENTS[env];
 	if (!config) {
@@ -70,13 +65,27 @@ export class TokenProvider {
 		return this.session;
 	}
 
+	/** GET against the Designer API itself (not ELT), authenticated with the Designer API key and Model header. */
+	async getDesigner<T>(path: string): Promise<T> {
+		const response = await fetch(`${this.environment.designerApiUrl}/${path}`, {
+			headers: {
+				Authorization: this.getDesignerAuthorization(),
+				Model: this.target.modelName,
+				'Content-Type': 'application/json'
+			}
+		});
+		const text = await response.text();
+		if (!response.ok) {
+			throw new Error(`GET ${path} failed for '${this.target.env}' (${response.status}): ${text}`);
+		}
+		return JSON.parse(text) as T;
+	}
+
 	private getDesignerAuthorization(): string {
 		const { env } = this.target;
-		const apiKey = this.target.apiKey ?? readEnvVar(env, 'APIKEY');
+		const { apiKey } = this.target;
 		if (!apiKey) {
-			throw new Error(
-				`No Designer API key for env '${env}'. Set ${envVarName(env, 'APIKEY')} (or PARITY_APIKEY), or apiKey in the target config.`
-			);
+			throw new Error(`No Designer API key for env '${env}'.`);
 		}
 		return /^Bearer\s/i.test(apiKey) ? apiKey : `Bearer ${apiKey}`;
 	}
